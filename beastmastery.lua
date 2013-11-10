@@ -10,7 +10,7 @@ ProbablyEngine.rotation.register_custom(253, "ModHunter_BM",
     { "!/cast [@pet,dead] Revive Pet; Call Pet 1", "!pet.exists" },
     -- Traps
     { "Explosive Trap", "modifier.ralt", "ground" },
-    { "Snake Trap"    , "modifier.rshift", "ground" },
+    { "Snake Trap"    , "modifier.ralt", "ground" },
     { "Freezing Trap" , "modifier.rcontrol", "ground" },
     -- Binding Shot
     { "Binding Shot" , "modifier.lcontrol", "ground" },
@@ -50,9 +50,11 @@ ProbablyEngine.rotation.register_custom(253, "ModHunter_BM",
       { "#gloves", "@modHunter.useGloves" },
       { "!/use Potion of Virmen's Bite", "@modHunter.usePot" },
       { "Dire Beast", "player.spell(120679).exists" },
-      { "Bestial Wrath", {
-          "player.spell(Kill Command).cooldown = 0"
-      }},
+      { "Bestial Wrath" },
+      -- TODO: play with timing of BW some more
+      --{ "Bestial Wrath", {
+      --    "player.spell(Kill Command).cooldown = 0"
+      --}},
       { "Kill Command", {
           "pet.exists",
           "@coreHunter.petInRange"
