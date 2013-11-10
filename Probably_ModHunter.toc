@@ -1,0 +1,8 @@
+## Interface: 50400
+## Title: Probably - ModHunter
+## Notes: ProbablyEngine Custom Hunter Rotations (BM/SV)
+## Dependencies: Probably
+
+library.lua
+beastmastery.lua
+survival.lua
