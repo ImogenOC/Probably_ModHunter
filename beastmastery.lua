@@ -10,7 +10,7 @@ ProbablyEngine.rotation.register_custom(253, "ModHunter_BM",
     { "!/cast [@pet,dead] Revive Pet; Call Pet 1", "!pet.exists" },
     -- Traps
     { "Explosive Trap", "modifier.ralt", "ground" },
-    { "Snake Trap"    , "modifier.ralt", "ground" },
+    { "Snake Trap"    , "modifier.rshift", "ground" },
     { "Freezing Trap" , "modifier.rcontrol", "ground" },
     -- Binding Shot
     { "Binding Shot" , "modifier.lcontrol", "ground" },
@@ -44,6 +44,9 @@ ProbablyEngine.rotation.register_custom(253, "ModHunter_BM",
         "pet.exists",
         "!pet.buff(Mend Pet)"
     }},
+
+    --{ "Aspect of the Hawk", "!player.buff(Aspect of the Hawk)" },
+    { "Aspect of the Iron Hawk", "!player.buff(Aspect of the Iron Hawk)" },
 
     -- Cooldowns
     {{
@@ -111,5 +114,11 @@ ProbablyEngine.rotation.register_custom(253, "ModHunter_BM",
 },
 {
   -- Out of combat
+    {"Aspect of the Cheetah", 
+        {"player.moving","!player.buff(Aspect of the Cheetah)"}},
+    --{"Aspect of the Hawk", 
+    --    {"!player.moving","!player.buff(Aspect of the Hawk)" }},
+    {"Aspect of the Iron Hawk", 
+        {"!player.moving","!player.buff(Aspect of the Iron Hawk)" }}
 })
 

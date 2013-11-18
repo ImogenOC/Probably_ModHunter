@@ -45,6 +45,9 @@ ProbablyEngine.rotation.register_custom(255, "ModHunter_SV",
         "!pet.buff(Mend Pet)"
     }},
 
+    --{ "Aspect of the Hawk", "!player.buff(Aspect of the Hawk)" },
+    { "Aspect of the Iron Hawk", "!player.buff(Aspect of the Iron Hawk)" },
+
     -- Cooldowns
     {{
       { "#gloves", "@modHunter.useGloves" },
@@ -97,5 +100,11 @@ ProbablyEngine.rotation.register_custom(255, "ModHunter_SV",
 },
 {
   -- Out of combat
+    {"Aspect of the Cheetah", 
+        {"player.moving","!player.buff(Aspect of the Cheetah)"}},
+    --{"Aspect of the Hawk", 
+    --    {"!player.moving","!player.buff(Aspect of the Hawk)" }}
+    {"Aspect of the Iron Hawk", 
+        {"!player.moving","!player.buff(Aspect of the Iron Hawk)" }}
 })
 
