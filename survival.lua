@@ -45,8 +45,16 @@ ProbablyEngine.rotation.register_custom(255, "ModHunter_SV",
         "!pet.buff(Mend Pet)"
     }},
 
-    --{ "Aspect of the Hawk", "!player.buff(Aspect of the Hawk)" },
-    { "Aspect of the Iron Hawk", "!player.buff(Aspect of the Iron Hawk)" },
+    { "109260", { -- Aspect of the Iron Hawk
+        "player.spell(109260).exists",
+        "!player.buff(109260)",
+        "!player.moving"
+    }},
+    { "13165", { -- Aspect of the Hawk
+        "!player.spell(109260).exists",
+        "!player.buff(13165)",
+        "!player.moving"
+    }},
 
     -- Cooldowns
     {{
@@ -100,11 +108,19 @@ ProbablyEngine.rotation.register_custom(255, "ModHunter_SV",
 },
 {
   -- Out of combat
-    {"Aspect of the Cheetah", 
-        {"player.moving","!player.buff(Aspect of the Cheetah)"}},
-    --{"Aspect of the Hawk", 
-    --    {"!player.moving","!player.buff(Aspect of the Hawk)" }}
-    {"Aspect of the Iron Hawk", 
-        {"!player.moving","!player.buff(Aspect of the Iron Hawk)" }}
+    {"5118", { -- Aspect of the Cheetah
+        "player.moving",
+        "!player.buff(5118)"
+    }},
+    { "109260", { -- Aspect of the Iron Hawk
+        "player.spell(109260).exists",
+        "!player.buff(109260)",
+        "!player.moving"
+    }},
+    { "13165", { -- Aspect of the Hawk
+        "!player.spell(109260).exists",
+        "!player.buff(13165)",
+        "!player.moving"
+    }}
 })
 
