@@ -1,5 +1,14 @@
 local modHunter = { }
 
+modHunter.aspectButton = false
+
+modHunter.buttons =
+  ProbablyEngine.toggle.create(
+    'aspect',
+    'Interface\\Icons\\ability_mount_jungletiger',
+    'Auto Aspect',
+    'Automatically switch aspect when moving and not in combat')
+
 modHunter.eventHandler = function(self, ...)
   local subEvent                = select(1, ...)
   local source                = select(4, ...)
@@ -33,40 +42,30 @@ function modHunter.spellCooldown(spell)
   return 0
 end
 
-function modHunter.useGloves(target)
-  local hasEngi = false
-  for i=1,9 do
-    if select(7,GetProfessionInfo(i)) == 202 then hasEngi = true end
-  end
-  if hasEngi == false then return false end
-  if GetItemCooldown(GetInventoryItemID("player", 10)) > 0 then return false end
-  return true
-end
-
-
 function modHunter.usePot(target)
    -- Check for hero/bloodlust/etc
-	if not (UnitBuff("player", 2825) or
-			UnitBuff("player", 32182) or 
-			UnitBuff("player", 80353) or
-			UnitBuff("player", 90355)) then
-		return false
-	end
+   if not (UnitBuff("player", 2825) or
+         UnitBuff("player", 32182) or
+         UnitBuff("player", 80353) or
+         UnitBuff("player", 90355)) then
+      return false
+   end
    -- 76089 = Virmen's Bite
-	if GetItemCount(76089) < 1 then return false end
-	if GetItemCooldown(76089) ~= 0 then return false end
-	if not ProbablyEngine.condition["modifier.cooldowns"] then return false end
-	if UnitLevel(target) ~= -1 then return false end
+   if GetItemCount(76089) < 1 then return false end
+   if GetItemCooldown(76089) ~= 0 then return false end
+   if not ProbablyEngine.condition["modifier.cooldowns"] then return false end
+   if UnitLevel(target) ~= -1 then return false end
   if modHunter.t2d(target) > 30 then return false end
-	return true 
+   return true
 end
 
 function modHunter.t2d(target)
   if ProbablyEngine.module.combatTracker.enemy[UnitGUID(target)] then
     local ttdest = ProbablyEngine.module.combatTracker.enemy[UnitGUID(target)]['ttdest']
     local ttdsamp = ProbablyEngine.module.combatTracker.enemy[UnitGUID(target)]['ttdsamples']
+    print (ttdest /ttdsamp)
     return (ttdest / ttdsamp)
-	end
+   end
   return 600
 end
 
@@ -75,7 +74,7 @@ function modHunter.validTarget(unit)
   if not UnitExists(unit) then return false end
   if not (UnitCanAttack("player", unit) == 1) then return false end
   if UnitIsDeadOrGhost(unit) then return false end
-  local inRange = IsSpellInRange(GetSpellInfo(3044), unit) -- Arcane Shot
+  local inRange = IsSpellInRange(GetSpellInfo(116), unit) -- Frostbolt
   if not inRange then return false end
   if inRange == 0 then return false end
   if not modHunter.immuneEvents(unit) then return false end
@@ -99,6 +98,18 @@ function modHunter.immuneEvents(unit)
   return true
 end
 
+function modHunter.enrageEvents(unit)
+  if UnitAura(unit,GetSpellInfo(12880)) -- Warrior: Enrage
+		or UnitAura(unit,GetSpellInfo(18499)) -- Warrior: Berserker Rage
+		or UnitAura(unit,GetSpellInfo(80084)) -- BWD: Maimgor
+		or UnitAura(unit,GetSpellInfo(80158)) --  SC: Warbringers
+		or UnitAura(unit,GetSpellInfo(81706)) --  TV: Lockmaw - Venomous Rage
+		or UnitAura(unit,GetSpellInfo(124172)) -- SoNT: Sik'thik Vanguard
+    or UnitAura(unit,GetSpellInfo(117837)) -- MV: Meng the Demented - Delirious
+		then return true end
+  return false
+end
+
 function modHunter.checkStone(target)
   if GetItemCount(6262, false, true) > 0 then
     if not modHunter.items[6262] then
@@ -116,6 +127,5 @@ function modHunter.checkShark(target)
       modHunter.items[77589].exp < GetTime() then return true end
   end
 end
-
 
 ProbablyEngine.library.register("modHunter", modHunter)

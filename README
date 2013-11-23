@@ -8,25 +8,30 @@ Stampede & AMoC is only cast when cooldowns is enabled plus the target is a boss
 The rotation is more conservative when casting Arcane Shot to avoid focus starvation
 Fervor is only cast when focus is below 50 instead of on cooldown
 Interrupt should attempt scatter shot when Counter Shot is on CD
+Toggle button for automatic aspect switching
+Automatic misdirect to focus or pet when target's threat is > 50%
 Several of the concepts and routines from rootWind were incorporated into these rotations
+Multitarget mode will only engage AOE abilities when both the multitarget toggle is set and there are at least 3 active enemies
 
 
 Hotkeys:
+Left Shift - Pause
 Left Alt - Barrage
 Left Control - Binding Shot
-Right Shift - Snake Trap
 Right Alt - Explosive Trap
-Right Control - Freezing Trap
+Right Alt - Snake Trap
+Right Alt - Freezing Trap
 
 Survival:
 Deterrence was removed so that it can be cast manually when needed instead of always when health is below 40%
 Exhilaration when health below 50%
-Healthstone when below 40% health
+Healthstone when below 40% health - this is currently broken
+Master Healing Potion when below 40% health - this is currently broken
 
 Main Rotation:
 Basically following the Icy Veins suggested priority system
 
 To Do:
-Implement some sort of 'smart AOE' system
 Figure out how to share common blocks of code between the specializations so as to not duplicate code
+Automatic tranq shot when the enemy is enraged & not a player mind-controlleda
 More cleanup and optimization and other fancy tricks
