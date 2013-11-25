@@ -28,8 +28,7 @@ ProbablyEngine.rotation.register_custom(255, "ModHunter_SV",
     {{
       { "Counter Shot" },
       { "Scatter Shot", "player.spell(Counter Shot).cooldown" }
-      -- TODO: This doesn't work correctly, need to revisit
-      --{ "19801", "@modHunter.enrageEvents" } -- Tranquilizing Shot
+      { "19801", "target.dispellable(19801)", "target" } -- Tranquilizing Shot
      }, "modifier.interrupts"
     },
 

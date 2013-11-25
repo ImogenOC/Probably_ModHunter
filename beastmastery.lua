@@ -1,6 +1,7 @@
 -- ProbablyEngine Rotation Packager
 -- Modified Hunter Rotation for BM/SV
 -- Created on Nov 6th 2013 2:10 am
+local LibDispellable = LibStub("LibDispellable-1.0")
 ProbablyEngine.rotation.register_custom(253, "ModHunter_BM", 
 {
     -- Combat
@@ -27,9 +28,8 @@ ProbablyEngine.rotation.register_custom(253, "ModHunter_BM",
     -- Interrupt
     {{
       { "Counter Shot" },
-      { "Scatter Shot", "player.spell(Counter Shot).cooldown" }
-      -- TODO: This doesn't work correctly, need to revisit
-      --{ "19801", "@modHunter.enrageEvents" } -- Tranquilizing Shot
+      { "Scatter Shot", "player.spell(Counter Shot).cooldown" },
+      { "19801", "target.dispellable(19801)", "target" } -- Tranquilizing Shot
      }, "modifier.interrupts"
     },
 

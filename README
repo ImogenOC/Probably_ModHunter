@@ -12,6 +12,7 @@ Toggle button for automatic aspect switching
 Automatic misdirect to focus or pet when target's threat is > 50%
 Several of the concepts and routines from rootWind were incorporated into these rotations
 Multitarget mode will only engage AOE abilities when both the multitarget toggle is set and there are at least 3 active enemies
+Automatic tranq shot when the enemy is enraged/dispellable
 
 
 Hotkeys:
