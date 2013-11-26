@@ -33,7 +33,7 @@ ProbablyEngine.rotation.register_custom(255, "ModHunter_SV",
     },
 
     -- Survival
-    --{ "Deterrence", "player.health < 40" },
+    { "Deterrence", "target.range <= 3" },
     { "Exhilaration", {
       "player.spell(109304).exists",
       "player.health < 50" 
@@ -49,12 +49,12 @@ ProbablyEngine.rotation.register_custom(255, "ModHunter_SV",
     -- Misdirect to focus target or pet when threat is > 50%
     { "Misdirection", { 
         "focus.exists", 
-        "target.threat > 50"
+        "target.threat > 60"
     }, "focus" },
     { "Misdirection", { 
         "pet.exists", 
         "!focus.exists", 
-        "target.threat > 50"
+        "target.threat > 85"
     }, "pet" },
 
 
@@ -105,7 +105,7 @@ ProbablyEngine.rotation.register_custom(255, "ModHunter_SV",
     }, 
     {
         "modifier.multitarget",
-        "modifier.enemies > 2" -- Even is AOE is enabled, don't use unless there are at least 3 enemies
+        "modifier.enemies >= 3" -- Even is AOE is enabled, don't use unless there are at least 3 enemies
     },     
     },
 
@@ -128,7 +128,7 @@ ProbablyEngine.rotation.register_custom(255, "ModHunter_SV",
 {
   -- Out of combat
     { "Mend Pet", {
-        "pet.health <= 75",
+        "pet.health <= 90",
         "pet.alive",
         "!pet.buff(Mend Pet)"
     }},
